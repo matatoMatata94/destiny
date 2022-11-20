@@ -1,14 +1,22 @@
 import 'package:destiny/story_brain.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(Destini());
+const double storyTextsize = 25;
+const double buttonTextsize = 20;
+const double heightBetweenButtons = 20;
+const MaterialColor bottomButtonColor = Colors.blue;
+const MaterialColor topButtonColor = Colors.red;
+
+void main() => runApp(const Destini());
 
 class Destini extends StatelessWidget {
+  const Destini({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: StoryPage(),
+      home: const StoryPage(),
     );
   }
 }
@@ -43,7 +51,7 @@ class _StoryPageState extends State<StoryPage> {
                   child: Text(
                     storyBrain.getStory(),
                     style: const TextStyle(
-                      fontSize: 25.0,
+                      fontSize: storyTextsize,
                     ),
                   ),
                 ),
@@ -56,17 +64,17 @@ class _StoryPageState extends State<StoryPage> {
                       storyBrain.nextStory(choiceNumber: 1);
                     });
                   },
-                  color: Colors.red,
+                  color: topButtonColor,
                   child: Text(
                     storyBrain.getChoice1(),
                     style: const TextStyle(
-                      fontSize: 20.0,
+                      fontSize: buttonTextsize,
                     ),
                   ),
                 ),
               ),
               const SizedBox(
-                height: 20.0,
+                height: heightBetweenButtons,
               ),
               Expanded(
                 flex: 2,
@@ -78,11 +86,11 @@ class _StoryPageState extends State<StoryPage> {
                         storyBrain.nextStory(choiceNumber: 2);
                       });
                     },
-                    color: Colors.blue,
+                    color: bottomButtonColor,
                     child: Text(
                       storyBrain.getChoice2(),
                       style: const TextStyle(
-                        fontSize: 20.0,
+                        fontSize: buttonTextsize,
                       ),
                     ),
                   ),
